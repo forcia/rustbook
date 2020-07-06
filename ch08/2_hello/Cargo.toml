@@ -1,0 +1,12 @@
+[package]
+name = "hello"
+version = "0.1.0"
+authors = ["PACKAGE AUTHOR <package_author@example.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-m-rt = "0.6.2"
+cortex-m-semihosting = "0.3.5"
+panic-halt = "0.2.0"
