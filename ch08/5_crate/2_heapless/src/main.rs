@@ -11,9 +11,9 @@ use heapless::Vec;
 #[entry]
 fn main() -> ! {
     let mut x = Vec::<_, U2>::new();
-    x.push(123);
-    x.push(456);
-    x.push(789);
+    let _ = x.push(123);
+    let _ = x.push(456);
+    let _ = x.push(789);
 
     let _ = hprintln!("{:?}", x);
 

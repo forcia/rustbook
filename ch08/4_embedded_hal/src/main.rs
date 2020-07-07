@@ -4,11 +4,11 @@
 extern crate panic_halt;
 
 use cortex_m_rt::entry;
-use cortex_m_semihosting::{debug, hprintln};
-use embedded_hal::serial::Write;
-use stm32f4xx_hal::serial::{config::Config, config::StopBits, Serial};
-use stm32f4xx_hal::{delay::Delay, i2c::I2c, prelude::*, stm32};
 
+//use embedded_hal::serial::Write;
+//use stm32f4xx_hal::serial::{config::Config, config::StopBits, Serial};
+//use stm32f4xx_hal::{prelude::*, stm32};
+//
 //#[entry]
 //fn main() -> ! {
 //    if let Some(dp) = stm32::Peripherals::take() {
@@ -38,6 +38,8 @@ use stm32f4xx_hal::{delay::Delay, i2c::I2c, prelude::*, stm32};
 //
 //    loop {}
 //}
+
+use stm32f4xx_hal::{i2c::I2c, prelude::*, stm32};
 
 #[entry]
 fn main() -> ! {
