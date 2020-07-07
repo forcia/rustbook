@@ -1,0 +1,169 @@
+[config]
+skip_core_tasks = true
+
+[env]
+BUILD_STABLE_TARGET = '''
+ch03/derive/sample
+ch03/iterator
+ch03/thread_safety/thread1
+ch03/thread_safety/thread2
+ch03/thread_safety/thread3
+ch03/thread_safety/thread4
+ch04/01_cli
+ch04/02_logic
+ch05/01_setup_web_framework
+ch05/02_template_engine
+ch05/03_database
+ch05/04_integration
+ch05/05_docker
+ch07/1_window
+ch07/2_widget
+ch07/3_message
+ch07/4_subscription
+ch08/2_hello
+ch08/3_led_blink
+ch08/4_embedded_hal
+ch08/5_crate/2_heapless
+ch08/5_crate/3_panic
+ch09/1_cargo/1_dir/sample
+ch09/1_cargo/2_feature/app
+ch09/1_cargo/2_feature/library
+ch09/1_cargo/4_workspace/sample
+ch09/2_formatter/2_clippy/sample
+ch09/3_coverage/sample
+ch09/4_benchmark/2_criterion/sample
+ch09/4_benchmark/3_profiler/sample
+ch09/4_benchmark/4_flamegraph/sample
+ch10/2_build_reproduce/hello
+ch10/3_binary_reduction/all
+ch10/3_binary_reduction/codegen-units
+ch10/3_binary_reduction/default
+ch10/3_binary_reduction/lto
+ch10/3_binary_reduction/opt-level
+ch10/3_binary_reduction/panic
+ch10/3_binary_reduction/strip
+ch10/5_crate_reliability/hello_crev
+ch10/6_fuzzing/sum
+ch10/7_private_crate/private_package
+ch11/ffi/addarray
+ch11/ffi/cffi
+ch11/macro/1_function/sample1
+ch11/macro/1_function/sample2
+ch11/macro/2_derive/sample
+ch11/macro/3_attribute/sample
+ch11/macro/macro_sample
+'''
+
+BUILD_NIGHTLY_TARGET = '''
+ch08/5_crate/1_alloc
+ch09/4_benchmark/1_bench/sample
+'''
+
+TEST_STABLE_TARGET = '''
+ch03/test_code
+ch04/03_unittest
+ch04/04_error
+ch06/mandelbrot
+ch06/sudoku
+'''
+
+[tasks.default]
+dependencies = [
+    "build-stable",
+    "build-nightly",
+    "test-stable",
+]
+
+[tasks.clean]
+script_runner = "@duckscript"
+script = [
+'''
+set_env TARGETS ${BUILD_STABLE_TARGET} ${BUILD_NIGHTLY_TARGET} ${TEST_STABLE_TARGET}
+set_env TASK cargo-clean
+cm_run_task run-tasks
+'''
+]
+
+[tasks.crago-build-stable]
+script_runner = "@shell"
+script = [
+'''
+cd ${TARGET}
+cargo build
+'''
+]
+
+[tasks.crago-build-nightly]
+script_runner = "@shell"
+script = [
+'''
+cd ${TARGET}
+cargo +nightly build
+'''
+]
+
+[tasks.crago-test-stable]
+script_runner = "@shell"
+script = [
+'''
+cd ${TARGET}
+cargo test
+'''
+]
+
+[tasks.cargo-clean]
+script_runner = "@shell"
+script = [
+'''
+cd ${TARGET}
+cargo clean
+'''
+]
+
+[tasks.build-stable]
+script_runner = "@duckscript"
+script = [
+'''
+set_env TARGETS ${BUILD_STABLE_TARGET}
+set_env TASK crago-build-stable
+cm_run_task run-tasks
+'''
+]
+
+[tasks.build-nightly]
+script_runner = "@duckscript"
+script = [
+'''
+set_env TARGETS ${BUILD_NIGHTLY_TARGET}
+set_env TASK crago-build-nightly
+cm_run_task run-tasks
+'''
+]
+
+[tasks.test-stable]
+script_runner = "@duckscript"
+script = [
+'''
+set_env TARGETS ${TEST_STABLE_TARGET}
+set_env TASK crago-test-stable
+cm_run_task run-tasks
+'''
+]
+
+[tasks.run-tasks]
+script_runner = "@duckscript"
+script = [
+'''
+targets = replace ${TARGETS} \n " "
+targets = array %{targets}
+
+for target in ${targets}
+  set_env TARGET ${target}
+  echo ${target}
+  cm_run_task ${TASK}
+end
+
+release targets
+exit 1
+'''
+]
