@@ -1,0 +1,42 @@
+name: Regression
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Install stable toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable
+        target: thumbv7em-none-eabi
+
+    - name: Install nightly toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: nightly
+        target: thumbv7em-none-eabi
+
+    - name: Install cargo-make
+      uses: actions-rs/cargo@v1
+      with:
+        command: install
+        args: cargo-make
+
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Run test
+      uses: actions-rs/cargo@v1
+      with:
+        command: make
+        args: all
