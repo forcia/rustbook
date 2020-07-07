@@ -164,6 +164,5 @@ for target in ${targets}
 end
 
 release targets
-exit 1
 '''
 ]

@@ -1,6 +1,12 @@
 name: Regression
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
 
 jobs:
   build:
@@ -34,6 +40,14 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v1
+
+    - uses: actions/cache@v2
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
     - name: Run test
       uses: actions-rs/cargo@v1
