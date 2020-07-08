@@ -154,8 +154,7 @@ cm_run_task run-tasks
 script_runner = "@duckscript"
 script = [
 '''
-targets = replace ${TARGETS} \n " "
-targets = array %{targets}
+targets = split %{TARGETS} \n
 
 for target in ${targets}
   set_env TARGET ${target}
