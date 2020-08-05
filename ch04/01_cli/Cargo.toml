@@ -1,0 +1,7 @@
+[workspace]
+
+members = [
+    "samplecli-env",
+    "samplecli-builder",
+    "samplecli-derivemacro",
+]

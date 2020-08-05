@@ -1,0 +1,5 @@
+[workspace]
+
+members = [
+    "samplecli", "error_handling"
+]
