@@ -21,6 +21,6 @@
 
 以下のディレクトリはそれぞれ個別のライセンスで公開されています。
 
-* `./ch07/7-3/rsc`: [M+ FONTS License](https://github.com/forcia/rustbook/blob/master/ch07/7-3/rsc/LICENSE_J)
-* `./ch07/7-4/rsc`: [M+ FONTS License](https://github.com/forcia/rustbook/blob/master/ch07/7-4/rsc/LICENSE_J)
-* `./ch07/7-5/rsc`: [M+ FONTS License](https://github.com/forcia/rustbook/blob/master/ch07/7-5/rsc/LICENSE_J)
+* `ch07/7-3/rsc`: [M+ FONTS License](ch07/7-3/rsc/LICENSE_J)
+* `ch07/7-4/rsc`: [M+ FONTS License](ch07/7-4/rsc/LICENSE_J)
+* `ch07/7-5/rsc`: [M+ FONTS License](ch07/7-5/rsc/LICENSE_J)
