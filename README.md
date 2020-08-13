@@ -10,6 +10,17 @@
 
 ## ディレクトリ構成
 
-## 注意事項
+`chXX`ディレクトリが本書の`XX`章に、
+各`chXX`ディレクトリ以下の`X-Y`ディレクトリは本書の`X-Y`節に対応しています。
 
 ## ライセンス
+
+本リポジトリのソースコードは原則として以下のMITライセンスのもとで公開されています。
+
+* https://github.com/forcia/rustbook/blob/master/LICENSE
+
+以下のディレクトリはそれぞれ個別のライセンスで公開されています。
+
+* `./ch07/7-3/rsc`: [M+ FONTS License](https://github.com/forcia/rustbook/blob/master/ch07/7-3/rsc/LICENSE_J)
+* `./ch07/7-4/rsc`: [M+ FONTS License](https://github.com/forcia/rustbook/blob/master/ch07/7-4/rsc/LICENSE_J)
+* `./ch07/7-5/rsc`: [M+ FONTS License](https://github.com/forcia/rustbook/blob/master/ch07/7-5/rsc/LICENSE_J)
