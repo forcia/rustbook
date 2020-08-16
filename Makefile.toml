@@ -64,7 +64,7 @@ ch03/3-5/test_code
 ch04/4-3
 ch04/4-4
 ch06/6-2/mandelbrot
-ch06/6-4/sudoku
+ch06/6-4/number_place
 '''
 
 [tasks.default]
