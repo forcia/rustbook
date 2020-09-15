@@ -28,10 +28,10 @@ fn is_valid(result: [u8; N], p: usize, v: u8) -> bool {
 
 #[wasm_bindgen]
 pub fn solve(problem: Vec<u8>) -> Vec<u8> {
-    solve_innner(problem)
+    solve_inner(problem)
 }
 
-fn solve_innner(problem: Vec<u8>) -> Vec<u8> {
+fn solve_inner(problem: Vec<u8>) -> Vec<u8> {
     let mut result = [0; N];
 
     let mut stack = vec![];
@@ -85,7 +85,7 @@ fn solve_innner(problem: Vec<u8>) -> Vec<u8> {
 mod tests {
     use super::*;
     #[test]
-    fn test_solve_innner() {
+    fn test_solve_inner() {
         let p = vec![
             0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1, 0, 9, 0, 0, 0, 0, 5, 0, 0, 0, 2, 0,
             0, 3, 1, 0, 0, 0, 0, 1, 4, 0, 6, 7, 8, 0, 0, 0, 7, 8, 6, 5, 2, 9, 0, 3, 4, 5, 6, 7, 0,
@@ -96,7 +96,7 @@ mod tests {
             9, 3, 1, 4, 7, 8, 6, 1, 4, 3, 6, 7, 8, 2, 9, 5, 7, 8, 6, 5, 2, 9, 1, 3, 4, 5, 6, 7, 2,
             9, 3, 8, 4, 1, 8, 9, 1, 4, 5, 6, 3, 7, 2, 3, 2, 4, 1, 8, 7, 5, 6, 9,
         ];
-        assert_eq!(solve_innner(p), expected);
+        assert_eq!(solve_inner(p), expected);
 
         let p = vec![
             1, 0, 0, 0, 0, 8, 0, 4, 0, 0, 0, 8, 0, 0, 9, 0, 6, 0, 0, 4, 5, 0, 0, 2, 8, 0, 0, 8, 0,
@@ -108,7 +108,7 @@ mod tests {
             3, 9, 4, 5, 2, 1, 6, 2, 1, 6, 8, 7, 3, 5, 9, 4, 5, 9, 4, 2, 1, 6, 3, 8, 7, 3, 8, 7, 5,
             9, 4, 6, 2, 1, 4, 5, 9, 6, 2, 1, 7, 3, 8, 6, 2, 1, 3, 8, 7, 4, 5, 9,
         ];
-        assert_eq!(solve_innner(p), expected);
+        assert_eq!(solve_inner(p), expected);
 
         let p = vec![
             0, 8, 0, 0, 0, 6, 5, 0, 0, 0, 0, 9, 0, 0, 7, 0, 0, 3, 5, 0, 0, 3, 0, 2, 0, 6, 0, 0, 4,
@@ -120,7 +120,7 @@ mod tests {
             6, 7, 5, 1, 3, 8, 2, 7, 5, 1, 2, 3, 8, 9, 4, 6, 2, 3, 8, 6, 9, 4, 7, 5, 1, 1, 7, 5, 8,
             2, 3, 6, 9, 4, 6, 9, 4, 1, 7, 5, 2, 3, 8, 8, 2, 3, 4, 6, 9, 1, 7, 5,
         ];
-        assert_eq!(solve_innner(p), expected);
+        assert_eq!(solve_inner(p), expected);
     }
 
     #[test]
