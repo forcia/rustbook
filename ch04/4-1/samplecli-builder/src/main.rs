@@ -6,14 +6,14 @@ fn main() {
         .author("Your name")
         .about("Super awesome sample RPN calculator")
         .arg(
-            Arg::with_name("formula_file")
+            Arg::new("formula_file")
                 .about("Formulas written in RPN")
                 .value_name("FILE")
                 .index(1)
                 .required(false),
         )
         .arg(
-            Arg::with_name("verbose")
+            Arg::new("verbose")
                 .about("Sets the level of verbosity")
                 .short('v')
                 .long("verbose")
