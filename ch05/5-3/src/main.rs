@@ -49,7 +49,7 @@ async fn index(db: web::Data<Pool<SqliteConnectionManager>>) -> Result<HttpRespo
         .body(response_body))
 }
 
-#[actix_rt::main]
+#[actix_web::main]
 async fn main() -> Result<(), actix_web::Error> {
     let manager = SqliteConnectionManager::file("todo.db");
     let pool = Pool::new(manager).expect("Failed to initialize the connection pool.");
