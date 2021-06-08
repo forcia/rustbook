@@ -1,5 +1,5 @@
 use iced::{
-    button, executor, Align, Application, Button, Column, Command, Element, Font,
+    button, executor, Align, Application, Button, Clipboard, Column, Command, Element, Font,
     HorizontalAlignment, Length, Row, Settings, Subscription, Text,
 };
 use iced_futures::{self, futures};
@@ -19,10 +19,10 @@ const MILLISEC: u64 = 1000;
 const MINUTE: u64 = 60;
 const HOUR: u64 = 60 * MINUTE;
 
-fn main() {
+fn main() -> iced::Result {
     let mut settings = Settings::default();
     settings.window.size = (400u32, 120u32);
-    GUI::run(settings);
+    GUI::run(settings)
 }
 
 /// Application's main structure
@@ -104,7 +104,11 @@ impl Application for GUI {
     ///
     /// In this application, this method handles messages from widgets and subscription.
     /// And, it changes the state of application by the message.
-    fn update(&mut self, message: Self::Message) -> Command<Self::Message> {
+    fn update(
+        &mut self,
+        message: Self::Message,
+        _clipboard: &mut Clipboard,
+    ) -> Command<Self::Message> {
         match message {
             Message::Start => {
                 self.tick_state = TickState::Ticking;

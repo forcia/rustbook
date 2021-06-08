@@ -1,7 +1,7 @@
-use iced::{executor, Application, Command, Element, Settings, Text};
+use iced::{executor, Application, Clipboard, Command, Element, Settings, Text};
 
-fn main() {
-    GUI::run(Settings::default());
+fn main() -> iced::Result {
+    GUI::run(Settings::default())
 }
 
 /// Application's main structure
@@ -21,7 +21,7 @@ struct GUI;
 ///
 /// In this case, we will use Application because we would like to redraw window contents at regular intervals.
 impl Application for GUI {
-    type Executor = executor::Null;
+    type Executor = executor::Default;
     type Message = ();
     type Flags = ();
 
@@ -36,7 +36,11 @@ impl Application for GUI {
 
     /// This method receives Message as event.
     /// And, it changes the state of application by the message.
-    fn update(&mut self, _message: Self::Message) -> Command<Self::Message> {
+    fn update(
+        &mut self,
+        _message: Self::Message,
+        _clipboard: &mut Clipboard,
+    ) -> Command<Self::Message> {
         Command::none()
     }
 
