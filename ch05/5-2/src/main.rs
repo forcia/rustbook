@@ -38,7 +38,7 @@ async fn index() -> Result<HttpResponse, MyError> {
         .body(response_body))
 }
 
-#[actix_rt::main]
+#[actix_web::main]
 async fn main() -> Result<(), actix_web::Error> {
     HttpServer::new(move || App::new().service(index))
         .bind("0.0.0.0:8080")?

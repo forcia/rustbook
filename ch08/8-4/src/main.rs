@@ -53,7 +53,7 @@ fn main() -> ! {
             gpiob.pb8.into_alternate_af4().set_open_drain(),
             gpiob.pb9.into_alternate_af4().set_open_drain(),
         );
-        let mut i2c = I2c::i2c1(dp.I2C1, pins, 400.khz(), clocks);
+        let mut i2c = I2c::new(dp.I2C1, pins, 400.khz(), clocks);
         let _ = i2c.write(0, &[0]);
     }
 

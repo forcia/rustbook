@@ -9,7 +9,7 @@ edition = "2018"
 [dependencies]
 
 [dev-dependencies]
-criterion = "0.3.2"
+criterion = "0.3.4"
 
 [[bench]]
 name = "benchmark"

@@ -5,7 +5,7 @@ authors = ["PACKAGE AUTHOR <package_author@example.com>"]
 edition = "2018"
 
 [dependencies]
-actix-web = "2.0.0"
-actix-rt = "1.1.1"
-thiserror = "1.0.20"
-askama = "0.10.1"
+actix-web = "3.3.2"
+actix-rt = "2.2.0"
+thiserror = "1.0.25"
+askama = "0.10.5"
