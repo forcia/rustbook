@@ -89,6 +89,7 @@ script_runner = "@shell"
 script = [
 '''
 cd ${TARGET}
+rm -f Cargo.lock
 cargo build
 '''
 ]
@@ -98,6 +99,7 @@ script_runner = "@shell"
 script = [
 '''
 cd ${TARGET}
+rm -f Cargo.lock
 cargo +nightly build
 '''
 ]
@@ -107,6 +109,7 @@ script_runner = "@shell"
 script = [
 '''
 cd ${TARGET}
+rm -f Cargo.lock
 cargo test
 '''
 ]

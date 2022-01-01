@@ -57,7 +57,7 @@ async fn delete_todo(
     db: web::Data<r2d2::Pool<SqliteConnectionManager>>,
 ) -> Result<HttpResponse, MyError> {
     let conn = db.get()?;
-    conn.execute("DELETE FROM todo WHERE id=?", &[params.id])?;
+    conn.execute("DELETE FROM todo WHERE id=?", &[&params.id])?;
     Ok(HttpResponse::SeeOther()
         .header(header::LOCATION, "/")
         .finish())
@@ -84,7 +84,7 @@ async fn index(db: web::Data<Pool<SqliteConnectionManager>>) -> Result<HttpRespo
         .body(response_body))
 }
 
-#[actix_rt::main]
+#[actix_web::main]
 async fn main() -> Result<(), actix_web::Error> {
     let manager = SqliteConnectionManager::file("todo.db");
     let pool = Pool::new(manager).expect("Failed to initialize the connection pool.");

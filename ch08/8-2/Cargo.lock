@@ -42,9 +42,9 @@ dependencies = [
 
 [[package]]
 name = "cortex-m-rt"
-version = "0.6.12"
+version = "0.6.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "00d518da72bba39496024b62607c1d8e37bcece44b2536664f1132a73a499a28"
+checksum = "b6d8353767db816419630a76d5f1ad5b09610d22b67ceb59647df6a8abc667f8"
 dependencies = [
  "cortex-m-rt-macros",
  "r0",
@@ -63,9 +63,9 @@ dependencies = [
 
 [[package]]
 name = "cortex-m-semihosting"
-version = "0.3.5"
+version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "113ef0ecffee2b62b58f9380f4469099b30e9f9cbee2804771b4203ba1762cfa"
+checksum = "6bffa6c1454368a6aa4811ae60964c38e6996d397ff8095a8b9211b1c1f749bc"
 dependencies = [
  "cortex-m",
 ]

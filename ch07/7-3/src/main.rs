@@ -1,5 +1,5 @@
 use iced::{
-    button, executor, Align, Application, Button, Column, Command, Element, Font,
+    button, executor, Align, Application, Button, Clipboard, Column, Command, Element, Font,
     HorizontalAlignment, Length, Row, Settings, Text,
 };
 
@@ -12,10 +12,10 @@ const FONT: Font = Font::External {
     bytes: include_bytes!("../rsc/PixelMplus12-Regular.ttf"),
 };
 
-fn main() {
+fn main() -> iced::Result {
     let mut settings = Settings::default();
     settings.window.size = (400u32, 120u32);
-    GUI::run(settings);
+    GUI::run(settings)
 }
 
 /// Application's main structure
@@ -38,7 +38,7 @@ struct GUI {
 ///
 /// In this case, we will use Application because we would like to redraw window contents at regular intervals.
 impl Application for GUI {
-    type Executor = executor::Null;
+    type Executor = executor::Default;
     type Message = ();
     type Flags = ();
 
@@ -59,7 +59,11 @@ impl Application for GUI {
 
     /// This method receives Message as event.
     /// And, it changes the state of application by the message.
-    fn update(&mut self, _message: Self::Message) -> Command<Self::Message> {
+    fn update(
+        &mut self,
+        _message: Self::Message,
+        _clipboard: &mut Clipboard,
+    ) -> Command<Self::Message> {
         Command::none()
     }
 
