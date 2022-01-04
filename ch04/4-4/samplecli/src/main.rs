@@ -1,6 +1,6 @@
 use anyhow::{bail, ensure, Context, Result};
 
-use clap::Clap;
+use clap::Parser;
 use std::fs::File;
 use std::io::{stdin, BufRead, BufReader};
 use std::path::PathBuf;
@@ -53,7 +53,7 @@ impl RpnCalculator {
     }
 }
 
-#[derive(Clap, Debug)]
+#[derive(Parser, Debug)]
 #[clap(
     name = "My RPN program",
     version = "1.0.0",
